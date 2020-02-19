@@ -1,0 +1,74 @@
+body {
+    background: url(C:/Users/sizov.g/Desktop/JavaScript/background.jpg);
+}
+
+.progress_bar {
+    border: 2px double black;
+    background: #fc3; 
+    padding: 3px;
+    border-radius: 9px;
+    margin: 0;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.cookie_click {
+    position: absolute;
+    margin: 10px;
+    top: 10%;
+    left: 43%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: inherit;
+    cursor: pointer;
+}
+.input_cookie_click {
+    top: 11%;
+    left: 42%;
+}
+
+.sell_click {
+    position: absolute;
+    margin: 10px;
+    top: 10%;
+    left: 56%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.input_sell_click {
+    top: 11%;
+    left: 55%;
+}
+
+.cookie_counter {
+    margin: 0;
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.money_counter {
+    margin: 0;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.upgrades {
+    margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}

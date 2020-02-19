@@ -7,7 +7,8 @@ let cookie = document.getElementById('cookie');
 let money = document.getElementById('money');
 let currentCookie = 0;
 let currentMoney = 0;
-let mods = {																                                      //Цена и лвл каждого апдейта
+
+let mods = {																                                            //Цена и лвл каждого апдейта
 	mixer: {
   	current_lvl: 0,
     base_cost: 1,
@@ -15,12 +16,12 @@ let mods = {																                                      //Цена и 
   }, 
 	spread: {
   	current_lvl: 0,
-    base_cost: 1,
+    base_cost: 10,
     base_price_cookie: 1,
   },
   cashbox: {
   	current_lvl: 0,
-    base_cost: 1,
+    base_cost: 100,
     base_cost_cookie: 0,
     base_money: 1,
     cashbox_started: false,
@@ -33,22 +34,39 @@ let mods = {																                                      //Цена и 
   }
 }
 
-//---------------------------------------------------- //кнопки продать/купить
+//---------------------------------------------------- кнопки продать/купить
 
-getCook.onclick = function() {							                                      //Лепка печенья по нажатию
+getCook.onmousedown = function () {
+  let element = document.getElementById("getCook");
+  element.classList.toggle("input_cookie_click");
+}
+
+getCook.onmouseup = function () {
+  let element = document.getElementById("getCook");
+  element.classList.toggle("input_cookie_click");
+}
+
+getCook.onclick = function() {							                                            //Лепка печенья по нажатию
   let progress_click = mods.mixer.base_progress_click * mods.mixer.current_lvl;
   progressCook.value = progressCook.value + 1 + progress_click;
-  handlerClickСookie();
-}
-function handlerClickСookie(){
-	if(progressCook.value === 10) {
+  if(progressCook.value === 10) {
   	addCookies(1);
     progressCook.value = 0;
   }
 }
 
-getMoney.onclick = function() {							                                      //продажа печенья по нажатию
-  if(currentCookie >= 1) {								                                        //Если печенек >= 5, то продаем 
+getMoney.onmousedown = function () {
+  let element = document.getElementById("getMoney");
+  element.classList.toggle("input_sell_click");
+}
+
+getMoney.onmouseup = function () {
+  let element = document.getElementById("getMoney");
+  element.classList.toggle("input_sell_click");
+}
+
+getMoney.onclick = function() {							                                            //продажа печенья по нажатию
+  if(currentCookie >= 1) {								                                              //Если печенек >= 5, то продаем 
     let spread_value = mods.spread.base_price_cookie * mods.spread.current_lvl;
     addMoney(1 + spread_value);
     decreaseCookies(1);
@@ -58,7 +76,7 @@ getMoney.onclick = function() {							                                      //п
   }
 }
 
-//--------------------------------------------------//Ключевые функции
+//--------------------------------------------------Ключевые функции
 
 function addCookies(count) {
 	currentCookie = currentCookie + count;
@@ -88,12 +106,18 @@ function decreaseMoney(count) {
   return false;
 }
 
-//-------------------------------------------------------//Контроль выбора апгрейда
+function counterMixer() {
+  let counter = getElementById("counter_mixer");
+  counter = mods.mixer.current_lvl;
+  counter_mixer.innerHTML = counter;
+}
+
+//-----------------------------------------------------Контроль выбора апгрейда
 
 let upgrades = document.getElementsByName('upgrade');
 document.getElementById('upgrader').onclick = checkRadio;
 
-function checkRadio() {                                                           //Проверка выбранного пункта
+function checkRadio() {                                                                 //Проверка выбранного пункта
   let allUpgrades = document.getElementsByName('upgrade');
   for(i = 0; i < allUpgrades.length; i++) {
     if(allUpgrades[i].checked) {
@@ -183,6 +207,7 @@ function work_baker() {
 }
 
 function startMods() {
+  counterMixer();
   work_cashbox();
   work_baker();
 }

@@ -1,16 +1,17 @@
-﻿<progress id="progressCook" value="0" max="10"></progress>
+﻿<div class="progress_bar"><progress id="progressCook" value="0" max="10"></progress></div>
 
-<input id="getCook" type="button" value="Слепить печенье">
-<input id="getMoney" type="button" value="Продать печенье">
+<img class="cookie_click" id="getCook" src=C:/Users/sizov.g/Desktop/JavaScript/cookie.png></img>
+<img class="sell_click" id="getMoney" src=C:/Users/sizov.g/Desktop/JavaScript/money.png></img>
 
-<div>Печенье: <span id=cookie></span></div>
-<div>Деньги: <span id=money></span></div>
+<div class="cookie_counter">Печенье: <span id=cookie></span></div>
+<div class="money_counter">Деньги: <span id=money></span></div>
 
-<b>Улучшения:</b>
-<p><input name="upgrade" type="radio" value="mixer">Миксер: </p>
-<p><input name="upgrade" type="radio" value="spread">Реклама: </p>
-<p><input name="upgrade" type="radio" value="cashbox">Кассир: </p>
-<p><input name="upgrade" type="radio" value="baker">Пекарь: </p>
-<p><input type="submit" id="upgrader" value="Улучшить!"></p>
+<div class="upgrades"><b>Улучшения:</b>
+<p><input name="upgrade" type="radio" value="mixer">Миксер: </p><span id=counter_mixer></span>
+<p><input name="upgrade" type="radio" value="spread">Реклама: </p><span id=counter_spread></span>
+<p><input name="upgrade" type="radio" value="cashbox">Кассир: </p><span id=counter_cashbox></span>
+<p><input name="upgrade" type="radio" value="baker">Пекарь: </p><span id=counter_baker></span>
+<p><input type="submit" id="upgrader" value="Улучшить!"></p></div>
 
 <script src="C:/Users/sizov.g/Desktop/JavaScript/project_clicker.js"></script>
+<link rel="stylesheet" href="C:/Users/sizov.g/Desktop/JavaScript/index.css">
