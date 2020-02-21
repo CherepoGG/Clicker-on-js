@@ -5,6 +5,10 @@ let getCook = document.getElementById('getCook');
 let getMoney = document.getElementById('getMoney');
 let cookie = document.getElementById('cookie');
 let money = document.getElementById('money');
+let button_upgrade_mixer = document.getElementById("upgrade_mixer");
+let button_upgrade_spread = document.getElementById("upgrade_spread");
+let button_upgrade_cashbox = document.getElementById("upgrade_cashbox");
+let button_upgrade_baker = document.getElementById("upgrade_baker");
 let counter_mixer = document.getElementById("counter_mixer");
 let counter_spread = document.getElementById("counter_spread");
 let counter_cashbox = document.getElementById("counter_cashbox");
@@ -37,6 +41,43 @@ let mods = {																                                            //Цен
     baker_started: false,
   }
 }
+//----------------------------------------------------- проверка денег и активация/деактивация апгрейдов
+function check_money_for_mixer() {
+  if(currentMoney >= mods.mixer.up_cost) {
+    button_upgrade_mixer.disabled = false;
+  }
+  else {
+    button_upgrade_mixer.disabled = true;
+  }
+}
+
+function check_money_for_spread() {
+  if(currentMoney >= mods.spread.base_cost) {
+    button_upgrade_spread.disabled = false;
+  }
+  else {
+    button_upgrade_spread.disabled = true;
+  }
+}
+
+function check_money_for_cashbox() {
+  if(currentMoney >= mods.cashbox.base_cost) {
+    button_upgrade_cashbox.disabled = false;
+  }
+  else {
+    button_upgrade_cashbox.disabled = true;
+  }
+}
+
+function check_money_for_baker() {
+  if(currentMoney >= mods.baker.base_cost) {
+    button_upgrade_baker.disabled = false;
+  }
+  else {
+    button_upgrade_baker.disabled = true;
+  }
+}
+
 
 //---------------------------------------------------- кнопки продать/купить
 
@@ -112,34 +153,28 @@ function decreaseMoney(count) {
 
 //-----------------------------------------------------Контроль выбора апгрейда
 
-document.getElementById('upgrader').onclick = checkRadio;
-
-function checkRadio() {                                                                 //Проверка выбранного пункта
-  let allUpgrades = document.getElementsByName('upgrade');
-  for(i = 0; i < allUpgrades.length; i++) {
-    if(allUpgrades[i].checked) {
-			val_input = allUpgrades[i].value;
-    switch(val_input) {
-      case "mixer": upgrade_mixer();
-      break;
-      case "spread": upgrade_spread();
-      break;
-      case "cashbox": upgrade_cashbox();
-      break;
-      case "baker": upgrade_baker();
-     	break;
-      }
-    }
-  }
+button_upgrade_mixer.onclick = function() {
+  upgrade_mixer();
 }
 
+button_upgrade_spread.onclick = function() {
+  upgrade_spread();
+}
+
+button_upgrade_cashbox.onclick = function() {
+  upgrade_cashbox();
+}
+
+button_upgrade_baker.onclick = function() {
+  upgrade_baker();
+}
 //-------------------------------------------------------------Работа апгрейдов
 
 function upgrade_mixer() {
   let up_lvl = mods.mixer.current_lvl + 1;
   let up_cost = mods.mixer.base_cost * up_lvl;
-  if( decreaseMoney(up_cost) ) {
-    mods.mixer.current_lvl = up_lvl;
+  if( decreaseMoney(mods.mixer.up_cost) ) {
+    mods.mixer.current_lvl = mods.mixer.up_lvl;
   }
   else {
     alert("Недостаточно денег!");
@@ -178,7 +213,7 @@ function upgrade_cashbox() {
 
 function work_cashbox() {
   let money = mods.cashbox.base_money * mods.cashbox.current_lvl;
-  let cookie = mods.cashbox.base_cost_cookie
+  let cookie = mods.cashbox.base_cost_cookie;
   if(currentCookie >= cookie) {
     addMoney(money);
     decreaseCookies(cookie);
@@ -205,9 +240,19 @@ function work_baker() {
 function startMods() {
   work_cashbox();
   work_baker();
+}
+setInterval(startMods, 1000);
+
+function start_status() {
+  check_money_for_mixer();
+  check_money_for_spread();
+  check_money_for_cashbox();
+  check_money_for_baker();
+  cookie.innerHTML = currentCookie;
+  money.innerHTML = currentMoney;
   counter_mixer.innerHTML = mods.mixer.current_lvl;
   counter_spread.innerHTML = mods.spread.current_lvl;
   counter_cashbox.innerHTML = mods.cashbox.current_lvl;
   counter_baker.innerHTML = mods.baker.current_lvl;
 }
-setInterval(startMods, 1000);
+setInterval (start_status, 1);
