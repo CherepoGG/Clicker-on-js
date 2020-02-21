@@ -5,6 +5,10 @@ let getCook = document.getElementById('getCook');
 let getMoney = document.getElementById('getMoney');
 let cookie = document.getElementById('cookie');
 let money = document.getElementById('money');
+let counter_mixer = document.getElementById("counter_mixer");
+let counter_spread = document.getElementById("counter_spread");
+let counter_cashbox = document.getElementById("counter_cashbox");
+let counter_baker = document.getElementById("counter_baker");
 let currentCookie = 0;
 let currentMoney = 0;
 
@@ -16,12 +20,12 @@ let mods = {																                                            //Цен
   }, 
 	spread: {
   	current_lvl: 0,
-    base_cost: 10,
+    base_cost: 1,
     base_price_cookie: 1,
   },
   cashbox: {
   	current_lvl: 0,
-    base_cost: 100,
+    base_cost: 1,
     base_cost_cookie: 0,
     base_money: 1,
     cashbox_started: false,
@@ -106,15 +110,8 @@ function decreaseMoney(count) {
   return false;
 }
 
-function counterMixer() {
-  let counter = getElementById("counter_mixer");
-  counter = mods.mixer.current_lvl;
-  counter_mixer.innerHTML = counter;
-}
-
 //-----------------------------------------------------Контроль выбора апгрейда
 
-let upgrades = document.getElementsByName('upgrade');
 document.getElementById('upgrader').onclick = checkRadio;
 
 function checkRadio() {                                                                 //Проверка выбранного пункта
@@ -122,7 +119,6 @@ function checkRadio() {                                                         
   for(i = 0; i < allUpgrades.length; i++) {
     if(allUpgrades[i].checked) {
 			val_input = allUpgrades[i].value;
-      
     switch(val_input) {
       case "mixer": upgrade_mixer();
       break;
@@ -207,8 +203,11 @@ function work_baker() {
 }
 
 function startMods() {
-  counterMixer();
   work_cashbox();
   work_baker();
+  counter_mixer.innerHTML = mods.mixer.current_lvl;
+  counter_spread.innerHTML = mods.spread.current_lvl;
+  counter_cashbox.innerHTML = mods.cashbox.current_lvl;
+  counter_baker.innerHTML = mods.baker.current_lvl;
 }
 setInterval(startMods, 1000);
