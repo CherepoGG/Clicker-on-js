@@ -229,8 +229,11 @@ function upgrade_cashbox() {
 }
 
 function start_cashbox_pb() {
+  let element = document.getElementById("progress_auto_sell");
   if(mods.cashbox.current_lvl >= 1) {
     progress_auto_sell.value += 1;
+    element.classList.remove("upgrade_bar_start");
+    element.classList.add("upgrade_bar");
   }
 }
 
@@ -264,7 +267,6 @@ function work_cashbox() {
   let cookie = mods.cashbox.base_cost_cookie;
   if(mods.cashbox.current_lvl >= 1 && currentCookie >= cookie && progress_auto_sell.value === progress_auto_sell.max) {
     progress_auto_sell.value = 0;
-    progress_auto_sell.innerHTML;
     addMoney(money);
     decreaseCookies(cookie);
     work_spread();
@@ -284,8 +286,11 @@ function upgrade_baker() {
 }
 
 function start_baker_pb() {
+  let element = document.getElementById("progress_auto_cook");
   if(mods.baker.current_lvl >= 1) {
     progress_auto_cook.value += 1;
+    element.classList.remove("upgrade_bar_start");
+    element.classList.add("upgrade_bar");
   }
 }
 
@@ -319,7 +324,6 @@ function work_baker() {
   if(progress_auto_cook.value === progress_auto_cook.max) {
     addCookies(cookies);
     progress_auto_cook.value = 0;
-    progress_auto_cook.innerHTML;
   }
 }
 
@@ -344,5 +348,7 @@ function start_status() {
   counter_baker.innerHTML = mods.baker.current_lvl;
   upgrade_baker_speed();
   upgrade_cashbox_speed();
+  progress_auto_sell.innerHTML
+  progress_auto_cook.innerHTML
 }
 setInterval(start_status, 1);

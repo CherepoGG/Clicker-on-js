@@ -94,6 +94,10 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.upgrade_bar_start {
+    display: none;
+}
+
 .upgrade_bar {
     display: inline-block;
     position: absolute;
@@ -106,7 +110,6 @@ body {
     font-size: 75%;
     background:  #fc3;
     cursor: pointer;
-
 }
 
 .color:disabled {
