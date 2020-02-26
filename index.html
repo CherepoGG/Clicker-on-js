@@ -1,16 +1,25 @@
-﻿<div class="progress_bar"><progress id="progressCook" value="0" max="10"></progress></div>
+﻿<html>
+    <body>
+        <title>Clicker</title>
+        <div class="progress_bar"><progress id="progressCook" value="0" max="10"></progress></div>
 
-<img class="cookie_click" id="getCook" src=cookie.png></img>
-<img class="sell_click" id="getMoney" src=money.png></img>
+        <img class="button_cooking" id="getCook" src=cookie.png></img>
+        <img class="button_selling" id="getMoney" src=money.png></img>
 
-<div class="cookie_counter">Печенье: <span id=cookie></span></div>
-<div class="money_counter">Деньги: <span id=money></span></div>
+        <div class="cookie_counter">Печенье: <span id=cookie></span></div>
+        <div class="money_counter">Деньги: <span id=money></span></div>
 
-<div class="upgrades"><b>Улучшения:</b>
-<p><button type="button" class="mixer" id="upgrade_mixer" value="mixer">"Миксер": <span id=counter_mixer></span></button></p>
-<p><button type="button" class="spread" id="upgrade_spread" value="spread">"Реклама": <span id=counter_spread></span></button></p>
-<p><button type="button" class="cashbox" id="upgrade_cashbox" value="cashbox">"Кассир": <span id=counter_cashbox></span></button></p>
-<p><button type="button" class="baker" id="upgrade_baker" value="baker">"Пекарь": <span id=counter_baker></span></button></p></div>
+        <div class="upgrades"><b>Улучшения:</b>
+        <p><button type="button" class="color" id="upgrade_mixer" value="mixer">Миксер: <span id=counter_mixer></span></button></p>
+        <p><button type="button" class="color" id="upgrade_spread" value="spread">Реклама: <span id=counter_spread></span></button></p>
+        <p><button type="button" class="color" id="upgrade_cashbox" value="cashbox">Кассир: <span id=counter_cashbox></span></button>
+            <progress class="upgrade_bar" id="progress_auto_sell" value="0" max="10"></progress></p>
+        <p><button type="button" class="color" id="upgrade_baker" value="baker">Пекарь: <span id=counter_baker></span></button>
+            <progress class="upgrade_bar" id="progress_auto_cook" value="0" max="10"></progress></p></div>
+
+        <button type="button" class="button_help" id="button_help">Помогите, я тупой</button>
   
-<script src="C:/Users/sizov.g/Desktop/JavaScript/project_clicker.js"></script>
-<link rel="stylesheet" href="index.css">
+        <script src="C:/Users/sizov.g/Desktop/JavaScript/project_clicker.js"></script>
+        <link rel="stylesheet" href="index.css">
+    </body> 
+</html>

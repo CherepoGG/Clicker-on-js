@@ -3,6 +3,7 @@ body {
 }
 
 .progress_bar {
+    font-size: 125%;
     user-select: none;
     border: 2px double black;
     background: #fc3; 
@@ -16,7 +17,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.cookie_click {
+.button_cooking {
     user-select: none;
     position: absolute;
     margin: 10px;
@@ -27,12 +28,12 @@ body {
     background-color: inherit;
     cursor: pointer;
 }
-.input_cookie_click {
+.animation_cook_click {
     top: 11%;
     left: 42%;
 }
 
-.sell_click {
+.button_selling {
     user-select: none;
     position: absolute;
     margin: 10px;
@@ -44,22 +45,37 @@ body {
     cursor: pointer;
 }
 
-.input_sell_click {
+.animation_sell_click {
     top: 11%;
     left: 55%;
 }
 
-.cookie_counter {
+.button_help {
+    font-size: 125%;
     user-select: none;
     margin: 0;
     position: absolute;
-    top: 7%;
+    top: 6%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+    background:  #fc3;
+    cursor: pointer;
+    outline: none;
+}
+
+.cookie_counter {
+    font-size: 150%;
+    user-select: none;
+    margin: 0;
+    position: absolute;
+    top: 6%;
     left: 5%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
 
 .money_counter {
+    font-size: 150%;
     user-select: none;
     margin: 0;
     position: absolute;
@@ -69,6 +85,7 @@ body {
 }
 
 .upgrades {
+    font-size: 125%;
     user-select: none;
     margin: 0;
     position: absolute;
@@ -77,15 +94,22 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.mixer {
+.upgrade_bar {
+    display: inline-block;
+    position: absolute;
+    left: 100%;
+    user-select: none;
+    transform: inherit;
+}
+
+.color {
+    font-size: 75%;
     background:  #fc3;
+    cursor: pointer;
+
 }
-.spread {
-    background: #fc3;
-}
-.cashbox {
-    background: #fc3;
-}
-.baker {
-    background: #fc3;
+
+.color:disabled {
+    background: #DCDCDC;
+    cursor: unset;
 }
