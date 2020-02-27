@@ -41,7 +41,9 @@ let mods = {																                                            //Цен
     baker_started: false,
   }
 }
+
 //------------------------------ проверка денег и активация/деактивация кнопок апгрейдов
+
 function check_money_for_mixer() {
   let up_lvl = mods.mixer.current_lvl + 1;
   let up_cost = mods.mixer.base_cost * up_lvl;
@@ -88,6 +90,7 @@ function check_money_for_baker() {
 
 
 //-----------------------------------------------------------------кнопки продать/купить
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -107,7 +110,7 @@ getCook.onclick = function() {							                                           
   animation_cookie();
   let progress_click = mods.mixer.base_progress_click * mods.mixer.current_lvl;
   progressCook.value = progressCook.value + 1 + progress_click;
-  if(progressCook.value === 10) {
+  if(progressCook.value === progressCook.max) {
   	addCookies(1);
     progressCook.value = 0;
   }
@@ -183,6 +186,7 @@ button_upgrade_cashbox.onclick = function() {
 button_upgrade_baker.onclick = function() {
   upgrade_baker();
 }
+
 //----------------------------------------------------------------------Работа апгрейдов
 
 function upgrade_mixer() {
@@ -216,22 +220,23 @@ function upgrade_cashbox() {
   let up_lvl = mods.cashbox.current_lvl + 1;
   let up_cost = mods.cashbox.base_cost * up_lvl;
   let up_cost_cookie = mods.cashbox.base_cost_cookie + 1;
-  if(currentMoney >= up_cost & currentCookie >= up_cost_cookie) {
+  if(currentMoney >= up_cost && currentCookie >= up_cost_cookie) {
     mods.cashbox.current_lvl = up_lvl;
     mods.cashbox.base_cost_cookie = up_cost_cookie;
     decreaseMoney(up_cost);
   }
   else {
-    alert("Недостаточно денег или печенья!");
+    alert("Недостаточно печенья!");
   }
 }
 
 function work_cashbox() {
   let money = mods.cashbox.base_money * mods.cashbox.current_lvl;
   let cookie = mods.cashbox.base_cost_cookie;
-  if(currentCookie >= cookie) {
+  if(mods.cashbox.current_lvl >= 1 && currentCookie >= cookie) {
     addMoney(money);
     decreaseCookies(cookie);
+    work_spread();
   }
 }
 

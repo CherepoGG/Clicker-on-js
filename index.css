@@ -102,4 +102,5 @@ body {
 
 .color:disabled {
     background: #DCDCDC;
+    cursor: unset;
 }
