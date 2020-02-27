@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Test Variables
+      run: echo ${{secrets.HOST}}
     - name: SSH Commands
       uses: appleboy/ssh-action@v0.0.2
       with:
