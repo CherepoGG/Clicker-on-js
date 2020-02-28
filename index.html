@@ -1,21 +1,19 @@
 ﻿<html>
     <body>
         <title>Clicker</title>
-        <div class="progress_bar"><progress id="progressCook" value="0" max="10"></progress></div>
+        <div title="Это полоса прогресса создания печенья" class="progress_bar"><progress id="progressCook" value="0" max="10"></progress></div></p>
 
-        <img class="button_cooking" id="getCook" src=cookie.png></img>
-        <img class="button_selling" id="getMoney" src=money.png></img>
+        <img title="Это кнопка добычи печенья" class="button_cooking" id="getCook" src=cookie.png></img>
+        <img title="Это кнопка продажи печенья" class="button_selling" id="getMoney" src=money.png></img>
 
-        <div class="cookie_counter">Печенье: <span id=cookie></span></div>
-        <div class="money_counter">Деньги: <span id=money></span></div>
+        <div title="Это счетчик печенья" class="cookie_counter">Печенье: <span id=cookie></span></div>
+        <div title="Это счетчик денег" class="money_counter">Деньги: <span id=money></span></div>
 
         <div class="upgrades"><b>Улучшения:</b>
-        <p><button type="button" class="color" id="upgrade_mixer" value="mixer">Миксер: <span id=counter_mixer></span></button></p>
-        <p><button type="button" class="color" id="upgrade_spread" value="spread">Реклама: <span id=counter_spread></span></button></p>
-        <p><button type="button" class="color" id="upgrade_cashbox" value="cashbox">Кассир: <span id=counter_cashbox></span></button></p>
-        <p><button type="button" class="color" id="upgrade_baker" value="baker">Пекарь: <span id=counter_baker></span></button></p></div>
-
-        <button type="button" class="button_help" id="button_help">Помогите, я тупой</button>
+            <p title="Это уучшение увеличивает прогресс за клик"><button type="button" class="color" id="upgrade_mixer" value="mixer">Миксер: <span id=counter_mixer></span></button></p>
+            <p title="Это улучшение увеличивает цену печенья на 1 единицу"><button type="button" class="color" id="upgrade_spread" value="spread">Реклама: <span id=counter_spread></span></button></p>
+            <p title="Это улучшение автоматически продает печенье каждые 10 секунд"><button type="button" class="color" id="upgrade_cashbox" value="cashbox">Кассир: <span id=counter_cashbox></span></button></p>
+            <p title="Это улучшение автоматически добывает 1 печенье каждые 10 секунд"><button type="button" class="color" id="upgrade_baker" value="baker">Пекарь: <span id=counter_baker></span></button></p></div>
 
         <script src="project_clicker.js"></script>
         <link rel="stylesheet" href="index.css">

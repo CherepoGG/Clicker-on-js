@@ -13,30 +13,31 @@ let counter_mixer = document.getElementById("counter_mixer");
 let counter_spread = document.getElementById("counter_spread");
 let counter_cashbox = document.getElementById("counter_cashbox");
 let counter_baker = document.getElementById("counter_baker");
+let button_help = document.getElementById("help");
 let currentCookie = 0;
 let currentMoney = 0;
 
 let mods = {																                                            //Цена и лвл каждого апдейта
 	mixer: {
   	current_lvl: 0,
-    base_cost: 1,
+    base_cost: 10,
     base_progress_click: 1,
   }, 
 	spread: {
   	current_lvl: 0,
-    base_cost: 1,
+    base_cost: 100,
     base_price_cookie: 1,
   },
   cashbox: {
   	current_lvl: 0,
-    base_cost: 1,
+    base_cost: 1000,
     base_cost_cookie: 0,
     base_money: 1,
     cashbox_started: false,
   },
   baker: {
 		current_lvl: 0,
-  	base_cost: 1,
+  	base_cost: 10000,
   	base_cookie: 1,
     baker_started: false,
   }
@@ -195,9 +196,6 @@ function upgrade_mixer() {
   if( decreaseMoney(up_cost) ) {
     mods.mixer.current_lvl = up_lvl;
   }
-  else {
-    alert("Недостаточно денег!");
-  }
 }
 
 function upgrade_spread() {
@@ -205,9 +203,6 @@ function upgrade_spread() {
   let up_cost = mods.spread.base_cost * up_lvl;
   if( decreaseMoney(up_cost) ) {
     mods.spread.current_lvl = up_lvl;
-  }
-  else {
-    alert("Недостаточно денег!");
   }
 }
 
@@ -247,9 +242,6 @@ function upgrade_baker() {
     mods.baker.current_lvl = up_lvl;
     decreaseMoney(up_cost);
   }
-  else {
-    alert("Недостаточно денег!");
-  }
 }
 
 function work_baker() {
@@ -276,3 +268,4 @@ function start_status() {
   counter_baker.innerHTML = mods.baker.current_lvl;
 }
 setInterval(start_status, 1);
+
