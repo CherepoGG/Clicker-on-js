@@ -253,7 +253,7 @@ function startMods() {
   work_cashbox();
   work_baker();
 }
-setInterval(startMods, 1000);
+setInterval(startMods, 10000);
 
 function start_status() {
   check_money_for_mixer();
@@ -268,4 +268,8 @@ function start_status() {
   counter_baker.innerHTML = mods.baker.current_lvl;
 }
 setInterval(start_status, 1);
+
+
+// сделать ценники для апгрейдов
+// сделать сохранение прогресса
 
