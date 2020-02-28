@@ -13,7 +13,6 @@ let counter_mixer = document.getElementById("counter_mixer");
 let counter_spread = document.getElementById("counter_spread");
 let counter_cashbox = document.getElementById("counter_cashbox");
 let counter_baker = document.getElementById("counter_baker");
-let button_help = document.getElementById("help");
 let currentCookie = 0;
 let currentMoney = 0;
 
