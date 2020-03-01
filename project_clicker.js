@@ -21,6 +21,8 @@ if("cookie" in localStorage && "money" in localStorage) {
   save_money = JSON.parse(localStorage.money);
   console.log(save_cook === currentCookie);
   console.log(save_money === currentMoney);
+  currentCookie = save_cook;
+  currentMoney = save_money;
 }
 
 let mods = {																                                            //Цена и лвл каждого апдейта
