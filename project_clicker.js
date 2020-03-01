@@ -16,6 +16,13 @@ let counter_baker = document.getElementById("counter_baker");
 let currentCookie = 0;
 let currentMoney = 0;
 
+if("cookie" in localStorage && "money" in localStorage) {
+  save_cook = JSON.parse(localStorage.cookie);
+  save_money = JSON.parse(localStorage.money);
+  console.log(save_cook === currentCookie);
+  console.log(save_money === currentMoney);
+}
+
 let mods = {																                                            //Цена и лвл каждого апдейта
 	mixer: {
   	current_lvl: 0,
@@ -141,15 +148,27 @@ getMoney.onclick = function() {                                                 
 
 //----------------------------------------------------------------------Ключевые функции
 
+function save_cook_progress() {
+  let save_cook = JSON.stringify(currentCookie);
+  localStorage.setItem("cookie", save_cook);
+}
+
+function save_money_progress() {
+  let save_money = JSON.stringify(currentMoney);
+  localStorage.setItem("money", save_money);
+}
+
 function addCookies(count) {
 	currentCookie = currentCookie + count;
   cookie.innerHTML = currentCookie;
+  save_cook_progress();
 }
 
 function decreaseCookies(count) {
   if(currentCookie - count >= 0) {
     currentCookie = currentCookie - count;
     cookie.innerHTML = currentCookie;
+    save_cook_progress();
     return true;
     }
   return false;
@@ -158,12 +177,14 @@ function decreaseCookies(count) {
 function addMoney(count) {
   currentMoney = currentMoney + count;
   money.innerHTML = currentMoney;
+  save_money_progress();
 }
 
 function decreaseMoney(count) {
   if(currentMoney - count >= 0) {
 	  currentMoney = currentMoney - count;
     money.innerHTML = currentMoney;
+    save_money_progress();
     return true;
   }
   return false;
@@ -248,6 +269,8 @@ function work_baker() {
   addCookies(cookies);
 }
 
+//---------------------------------------------------------------- функции запуска
+
 function startMods() {
   work_cashbox();
   work_baker();
@@ -265,9 +288,11 @@ function start_status() {
   counter_spread.innerHTML = mods.spread.current_lvl;
   counter_cashbox.innerHTML = mods.cashbox.current_lvl;
   counter_baker.innerHTML = mods.baker.current_lvl;
+ // check_save_progress();
 }
 setInterval(start_status, 1);
 
+//---------------------------------------------------------------- сохранение прогресса
 
 // сделать ценники для апгрейдов
 // сделать сохранение прогресса
