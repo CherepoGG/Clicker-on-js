@@ -16,13 +16,42 @@ let counter_baker = document.getElementById("counter_baker");
 let currentCookie = 0;
 let currentMoney = 0;
 
-if("cookie" in localStorage && "money" in localStorage) {
-  save_cook = JSON.parse(localStorage.cookie);
-  save_money = JSON.parse(localStorage.money);
-  console.log(save_cook === currentCookie);
-  console.log(save_money === currentMoney);
-  currentCookie = save_cook;
-  currentMoney = save_money;
+// if("cookie" in localStorage && "money" in localStorage) {
+//   save_cook = JSON.parse(localStorage.cookie);
+//   save_money = JSON.parse(localStorage.money);
+// }
+
+// if("counter_mixer" in localStorage)
+//   save_mixer = JSON.parse(localStorage.mixer);
+//   save_spread = JSON.parse(localStorage.spread);
+//   save_cashbox = JSON.parse(localStorage.cashbox);
+//   save_baker = JSON.parse(localStorage.baker); 
+//   currentCookie = save_cook;
+//   currentMoney = save_money;
+//   counter_mixer = save_mixer;
+//   counter_spread = save_spread;
+//   counter_cashbox = save_cashbox;
+//   counter_baker = save_baker;
+
+switch(localStorage) {
+  case cookie: JSON.parse(localStorage.cookie);
+    currentCookie = save_cookie;
+  break;
+  case money: JSON.parse(localStorage.money);
+    currentMoney = save_money;
+  break;
+  case save_mixer: JSON.parse(localStorage.mixer);
+    counter_mixer = save_mixer;
+  break;
+  case save_spread: JSON.parse(localStorage.spread);
+  counter_spread = save_spread;
+  break;
+  case save_cashbox: JSON.parse(localStorage.cashbox);
+    counter_cashbox = save_cashbox;
+  break;
+  case save_baker: JSON.parse(localStorage.baker);
+    counter_baker = save_baker;
+  break;
 }
 
 let mods = {																                                            //Цена и лвл каждого апдейта
@@ -151,8 +180,8 @@ getMoney.onclick = function() {                                                 
 //----------------------------------------------------------------------Ключевые функции
 
 function save_cook_progress() {
-  let save_cook = JSON.stringify(currentCookie);
-  localStorage.setItem("cookie", save_cook);
+  let save_cookie = JSON.stringify(currentCookie);
+  localStorage.setItem("cookie", save_cookie);
 }
 
 function save_money_progress() {
@@ -212,11 +241,32 @@ button_upgrade_baker.onclick = function() {
 
 //----------------------------------------------------------------------Работа апгрейдов
 
+function save_mixer_progress() {
+  let save_mixer = JSON.stringify(counter_mixer);
+  localStorage.setItem("mixer", save_mixer);
+}
+
+function save_spread_progress() {
+  let save_spread = JSON.stringify(counter_spread);
+  localStorage.setItem("spread", save_spread);
+}
+
+function save_cashbox_progress() {
+  let save_cashbox = JSON.stringify(counter_cashbox);
+  localStorage.setItem("cashbox", save_cashbox);
+}
+
+function save_baker_progress() {
+  let save_baker = JSON.stringify(counter_baker);
+  localStorage.setItem("baker", save_baker);
+}
+
 function upgrade_mixer() {
   let up_lvl = mods.mixer.current_lvl + 1;
   let up_cost = mods.mixer.base_cost * up_lvl;
   if( decreaseMoney(up_cost) ) {
     mods.mixer.current_lvl = up_lvl;
+    save_mixer_progress();
   }
 }
 
@@ -225,6 +275,7 @@ function upgrade_spread() {
   let up_cost = mods.spread.base_cost * up_lvl;
   if( decreaseMoney(up_cost) ) {
     mods.spread.current_lvl = up_lvl;
+    save_spread_progress();
   }
 }
 
@@ -241,6 +292,7 @@ function upgrade_cashbox() {
     mods.cashbox.current_lvl = up_lvl;
     mods.cashbox.base_cost_cookie = up_cost_cookie;
     decreaseMoney(up_cost);
+    save_cashbox_progress();
   }
   else {
     alert("Недостаточно печенья!");
@@ -263,6 +315,7 @@ function upgrade_baker() {
   if(currentMoney >= up_cost) {
     mods.baker.current_lvl = up_lvl;
     decreaseMoney(up_cost);
+    save_baker_progress();
   }
 }
 
