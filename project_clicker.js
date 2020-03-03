@@ -16,42 +16,28 @@ let counter_baker = document.getElementById("counter_baker");
 let currentCookie = 0;
 let currentMoney = 0;
 
-// if("cookie" in localStorage && "money" in localStorage) {
-//   save_cook = JSON.parse(localStorage.cookie);
-//   save_money = JSON.parse(localStorage.money);
-// }
-
-// if("counter_mixer" in localStorage)
-//   save_mixer = JSON.parse(localStorage.mixer);
-//   save_spread = JSON.parse(localStorage.spread);
-//   save_cashbox = JSON.parse(localStorage.cashbox);
-//   save_baker = JSON.parse(localStorage.baker); 
-//   currentCookie = save_cook;
-//   currentMoney = save_money;
-//   counter_mixer = save_mixer;
-//   counter_spread = save_spread;
-//   counter_cashbox = save_cashbox;
-//   counter_baker = save_baker;
-
-switch(localStorage) {
-  case cookie: JSON.parse(localStorage.cookie);
-    currentCookie = save_cookie;
-  break;
-  case money: JSON.parse(localStorage.money);
-    currentMoney = save_money;
-  break;
-  case save_mixer: JSON.parse(localStorage.mixer);
-    counter_mixer = save_mixer;
-  break;
-  case save_spread: JSON.parse(localStorage.spread);
+if("cookie" in localStorage && "money" in localStorage) {
+  save_cook = JSON.parse(localStorage.cookie);
+  save_money = JSON.parse(localStorage.money);
+  currentCookie = save_cook;
+  currentMoney = save_money;
+}
+if("mixer" in localStorage) {
+  save_mixer = JSON.parse(counter_mixer.innerHTML);
+  counter_mixer = save_mixer;
+  console.log(localStorage.mixer);
+}
+if("spread" in localStorage) {
+  save_spread = JSON.parse(counter_spread.innerHTML);
   counter_spread = save_spread;
-  break;
-  case save_cashbox: JSON.parse(localStorage.cashbox);
-    counter_cashbox = save_cashbox;
-  break;
-  case save_baker: JSON.parse(localStorage.baker);
-    counter_baker = save_baker;
-  break;
+}
+if("cashbox" in localStorage) {
+  save_cashbox = JSON.parse(counter_cashbox.innerHTML);
+  counter_cashbox = save_cashbox;
+}
+if("baker" in localStorage) {
+  save_baker = JSON.parse(counter_baker.innerHTML);
+  counter_baker = save_baker;
 }
 
 let mods = {																                                            //Цена и лвл каждого апдейта
@@ -242,22 +228,22 @@ button_upgrade_baker.onclick = function() {
 //----------------------------------------------------------------------Работа апгрейдов
 
 function save_mixer_progress() {
-  let save_mixer = JSON.stringify(counter_mixer);
+  let save_mixer = JSON.stringify(counter_mixer.innerHTML);
   localStorage.setItem("mixer", save_mixer);
 }
 
 function save_spread_progress() {
-  let save_spread = JSON.stringify(counter_spread);
+  let save_spread = JSON.stringify(counter_spread.innerHTML);
   localStorage.setItem("spread", save_spread);
 }
 
 function save_cashbox_progress() {
-  let save_cashbox = JSON.stringify(counter_cashbox);
+  let save_cashbox = JSON.stringify(counter_cashbox.innerHTML);
   localStorage.setItem("cashbox", save_cashbox);
 }
 
 function save_baker_progress() {
-  let save_baker = JSON.stringify(counter_baker);
+  let save_baker = JSON.stringify(counter_baker.innerHTML);
   localStorage.setItem("baker", save_baker);
 }
 
